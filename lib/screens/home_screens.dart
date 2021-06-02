@@ -8,6 +8,7 @@ import 'package:afribiopos01/models/stock_catalog_model.dart';
 import 'package:afribiopos01/pages/cart_page.dart';
 import 'package:afribiopos01/pages/get_start_page.dart';
 import 'package:afribiopos01/pages/inventory_page.dart';
+import 'package:afribiopos01/pages/pos_commands_page.dart';
 import 'package:afribiopos01/services/http_service.dart';
 import 'package:afribiopos01/services/route_service.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -708,7 +709,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 position: BadgePosition.topEnd(top: 8, end: 3),
                 child: IconButton(
-                    icon: Icon(Icons.notifications), onPressed: () {}),
+                    icon: Icon(Icons.notifications),
+                    onPressed: () {
+                      Navigator.push(
+                          context, SlideRightRoute(page: PosCommandsPage()));
+                    }),
               );
             }),
         Badge(
