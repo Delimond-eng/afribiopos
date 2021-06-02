@@ -60,9 +60,7 @@ class HttpService {
         body: jsonEncode(
             <String, dynamic>{'pos_id': posId.toString(), 'date': date}));
 
-    if (response.statusCode == 200) {
-      return Inventory.fromJson(jsonDecode(response.body));
-    }
+    return Inventory.fromJson(jsonDecode(response.body));
   }
 
   static Future<List<Products>> filter(String text) async {
