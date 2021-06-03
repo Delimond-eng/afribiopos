@@ -19,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:badges/badges.dart';
 import 'package:afribiopos01/globals.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -711,8 +712,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: IconButton(
                     icon: Icon(Icons.notifications),
                     onPressed: () {
-                      Navigator.push(
-                          context, SlideRightRoute(page: PosCommandsPage()));
+                      EasyLoading.show();
+                      manager.posCommandView.forEach((commandsList) {
+                        EasyLoading.dismiss();
+                        Navigator.push(
+                            context, SlideRightRoute(page: PosCommandsPage(
+                          commands: commandsList.commandes,
+                        )));
+                      });
                     }),
               );
             }),
